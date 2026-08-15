@@ -7,7 +7,10 @@
     --heading: #fff;
     --text: #ddd;
 
-    --base-font-size: 20px;
+    --anchor: rgb(158, 94, 255);
+    --anchor-hover: rgb(100, 0, 255);
+
+    --base-font-size: clamp(10px, 1.2vw + 10px, 20px);
 }
 
 *,
@@ -80,6 +83,14 @@ section {
     padding: 3em;
 }
 
+.disable-padding {
+    padding: 0;
+}
+
+.disable-margin {
+    margin: 0;
+}
+
 section.fixed-bg {
     background-position: center center;
     background-repeat: no-repeat;
@@ -122,17 +133,18 @@ main .enable-initial-padding {
 }
 
 .logo {
-    font-family: 'Geist';
+    font-family: 'Geist' !important;
+    font-weight: 400 !important;
 
-    color: white;
+    color: white !important;
 }
 
 .logo .head {
-    color: rgba(100, 0, 255);
+    color: rgba(100, 0, 255) !important;
 }
 
 .logo .tail {
-    color: #777;
+    color: #777 !important;
 }
 
 button:not(.initial) {
@@ -184,4 +196,9 @@ a:not(.plain):has(> img):hover {
 a:not(.plain) > img {
     width: 1em;
     height: 1em;
+}
+
+::selection {
+    background: rgba(255, 255, 255, 0.1);
+    color: color-mix(in oklab, currentColor, white 25%);
 }
