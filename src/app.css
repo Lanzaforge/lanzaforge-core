@@ -1,0 +1,187 @@
+@import './styles/fonts.css';
+
+/* @import './styles/debug.css'; */
+
+:root {
+    --bg: #000;
+    --heading: #fff;
+    --text: #ddd;
+
+    --base-font-size: 20px;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+}
+
+html {
+    font-optical-sizing: auto;
+}
+
+body {
+    font-family: 'Geist';
+    font-weight: 300;
+
+    line-height: 1.5;
+
+    background: var(--bg);
+    color: var(--text);
+    font-size: var(--base-font-size);
+}
+
+main {
+    min-height: 100vh;
+}
+
+main.frozen {
+    overflow: hidden;
+    touch-action: none;
+    pointer-events: none;
+    user-select: none;
+    overflow: hidden;
+}
+
+hr {
+    border: none;
+    height: 0.1em;
+    background-color: var(--hr-bg);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-weight: 600;
+}
+
+b {
+    font-weight: 500;
+}
+
+.tooltip {
+    position: relative;
+    cursor: pointer;
+    display: inline-block;
+}
+
+section {
+    position: relative;
+
+    max-height: none;
+
+    flex: none;
+
+    overflow: hidden;
+    padding: 3em;
+}
+
+section.fixed-bg {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+section.stretched {
+    min-height: calc(100vh);
+}
+
+main section:not(.disable-layout),
+main section header:not(.disable-layout) {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+}
+
+main section:not(.disable-spacing),
+main section header:not(.disable-spacing) {
+    gap: 1em;
+}
+
+main > section:first-of-type:not(.disable-initial-padding),
+main .enable-initial-padding {
+    padding-top: calc(20vh + 4em);
+}
+
+.enable-spacing {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+    gap: 1em;
+}
+
+.dim {
+    opacity: 0.6;
+}
+
+.logo {
+    font-family: 'Geist';
+
+    color: white;
+}
+
+.logo .head {
+    color: rgba(100, 0, 255);
+}
+
+.logo .tail {
+    color: #777;
+}
+
+button:not(.initial) {
+    background: none;
+    border: none;
+    padding: 0;
+    margin: 0;
+    border-radius: 0;
+    font-size: inherit;
+    color: inherit;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+a.plain {
+    text-decoration: none;
+    color: var(--text);
+}
+
+a:not(.plain) {
+    text-decoration: none;
+    display: inline-block;
+
+    color: var(--anchor);
+
+    transition: color 0.2s ease;
+}
+
+a:not(.plain):hover {
+    text-decoration: underline;
+    color: var(--anchor-hover);
+}
+
+a:not(.plain):has(> img) {
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5em;
+
+    color: white;
+}
+
+a:not(.plain):has(> img):hover {
+    text-decoration: none;
+    color: #ddd;
+}
+
+a:not(.plain) > img {
+    width: 1em;
+    height: 1em;
+}
