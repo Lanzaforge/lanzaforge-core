@@ -22,7 +22,7 @@
             <div class="group">
                 <h2>Company</h2>
                 <a href="/about">About</a>
-                <a href="/about#contact">Contact Us</a>
+                <a href="/contact">Contact Us</a>
                 <a href="/brand">Brand</a>
             </div>
             <div class="group">
@@ -82,7 +82,7 @@
                     <img src="/assets/socials/bluesky.svg" alt="Bluesky" />
 
                     <span class="handle">
-                        <span class="lanzaforge">lanzaforge</span>
+                        <span class="lanzaforge">lanzaforge</span>.bsky.social
                     </span>
                 </External>
 
@@ -90,7 +90,7 @@
                     <img src="/assets/socials/x.svg" alt="X" />
 
                     <span class="handle">
-                        <span class="lanzaforge">Lanzaforge</span>
+                        @<span class="lanzaforge">lanzaforge</span>
                     </span>
                 </External>
 

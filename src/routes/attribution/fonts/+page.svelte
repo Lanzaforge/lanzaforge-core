@@ -1,4 +1,5 @@
 <script lang="ts">
+    import External from '$lib/components/Links/External.svelte';
     import { onMount } from 'svelte';
 
     const fonts = [
@@ -62,7 +63,7 @@
     <title>Font Credits | lanzoor.dev</title>
 </svelte:head>
 
-<section class="stretched" id="intro">
+<section id="intro">
     <h1>Fonts</h1>
 
     <blockquote class="dim">
@@ -84,8 +85,6 @@
             attribution links.</b
         >
     </p>
-
-    <div class="down-arrow">Keep scrolling</div>
 </section>
 
 <section id="showcase">
@@ -103,13 +102,70 @@
         <div class="font jetbrains-mono" id="jetbrains-mono">
             <h1>JetBrains Mono</h1>
 
-            blah blah blah
+            <p>
+                Links:
+                <External href="https://www.jetbrains.com/lp/mono/">Website</External> |
+                <External href="https://fonts.google.com/specimen/JetBrains+Mono"
+                    >Google Fonts</External
+                > |
+                <External href="https://github.com/JetBrains/JetBrainsMono">GitHub</External>
+            </p>
+
+            <p>Designer(s):</p>
+            <ul>
+                <li>
+                    <b>JetBrains</b><br />
+                    Links:
+                    <External href="https://www.jetbrains.com/">Website</External> |
+                    <External href="https://github.com/JetBrains">GitHub</External>
+                </li>
+            </ul>
+
+            <p>
+                License: <External
+                    href="https://github.com/JetBrains/JetBrainsMono/blob/master/OFL.txt"
+                    >SIL Open Font License 1.1</External
+                >
+            </p>
+
+            <p>
+                Identifier: <code>jetbrains-mono</code>
+            </p>
+
+            <p>Usage: Used for code, technical information, and other monospaced text.</p>
         </div>
 
         <div class="font fira-code" id="fira-code">
             <h1>Fira Code</h1>
 
-            blah blah blah
+            <p>
+                Links:
+                <External href="https://github.com/tonsky/FiraCode">Github</External> |
+                <External href="https://fonts.google.com/specimen/Fira+Code">Google Fonts</External>
+            </p>
+
+            <p>Designer(s):</p>
+            <ul>
+                <li>
+                    <b>tonsky</b><br />
+                    Links:
+                    <External href="https://github.com/tonsky">GitHub</External> |
+                    <External href="https://tonsky.me/">Website</External><br />
+                </li>
+            </ul>
+
+            <p>
+                License: <External
+                    href="https://github.com/tonsky/FiraCode/blob/master/LICENSE     "
+                    >SIL Open Font License 1.1</External
+                >
+            </p>
+
+            <p>
+                Identifier: <code>fira-code</code>
+            </p>
+
+            <p>Usage: Used for code, technical information, and other monospaced text.</p>
         </div>
 
         <div class="font noto-sans" id="noto-sans">
@@ -127,62 +183,68 @@
 </section>
 
 <style lang="css">
-    #font-showcase {
-        display: none;
+    #showcase {
+        display: flex;
+        flex-direction: row;
+        gap: 4rem;
+        align-items: flex-start;
+
+        overflow: visible;
+
+        background: radial-gradient(circle at bottom center, rgba(100, 0, 255, 0.25), transparent),
+            black;
+        background-position: center center;
+        background-attachment: fixed;
     }
-    @media (min-width: 1080px) {
-        #showcase {
-            display: flex;
-            flex-direction: row;
-            gap: 4rem;
-            align-items: flex-start;
 
-            overflow: visible;
+    #font-showcase {
+        position: sticky;
+        top: 0;
+
+        width: 40vw;
+        height: 100vh;
+
+        display: flex;
+        flex-direction: column;
+
+        justify-content: center;
+        align-items: flex-start;
+
+        padding: 2em;
+    }
+
+    #font-showcase.animate {
+        animation: fadeIn 0.5s ease;
+    }
+
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateY(10px);
         }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
 
+    #font-description {
+        width: 100vh;
+    }
+
+    .font {
+        min-height: 100vh;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        gap: 0.5em;
+        justify-content: center;
+    }
+
+    @media (max-width: 1080px) {
         #font-showcase {
-            position: sticky;
-            top: 0;
-
-            width: 40vw;
-            height: 100vh;
-
-            display: flex;
-            flex-direction: column;
-
-            justify-content: center;
-            align-items: flex-start;
-
-            padding: 2rem;
-        }
-
-        #font-showcase.animate {
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(10px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        #font-description {
-            width: 100vh;
-        }
-
-        .font {
-            min-height: 100vh;
-            width: 100%;
-
-            display: flex;
-            flex-direction: column;
-            gap: 2em;
-            justify-content: center;
+            display: none;
         }
     }
 </style>
