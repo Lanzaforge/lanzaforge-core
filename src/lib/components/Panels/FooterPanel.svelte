@@ -194,4 +194,23 @@
     #footer-panel #connections .handle .lanzaforge {
         color: rgb(188, 143, 255);
     }
+
+    @media (max-width: 768px) {
+        :global(#footer-panel #connections a > img) {
+            width: 2em;
+            height: 2em;
+        }
+
+        #footer-panel #connections {
+            justify-content: flex-start;
+            column-gap: 1em;
+            row-gap: 0.25em;
+
+            margin: 0;
+        }
+
+        #footer-panel #connections .handle {
+            display: none;
+        }
+    }
 </style>

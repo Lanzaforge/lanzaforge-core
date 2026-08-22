@@ -1,62 +1,6 @@
 <script lang="ts">
     import External from '$lib/components/Links/External.svelte';
     import { onMount } from 'svelte';
-
-    const fonts = [
-        {
-            internalName: 'jetbrains-mono',
-            name: 'JetBrains Mono',
-        },
-        {
-            internalName: 'fira-code',
-            name: 'Fira Code',
-        },
-        {
-            internalName: 'noto-sans',
-            name: 'Noto Sans',
-        },
-        {
-            internalName: 'noto-sans-mono',
-            name: 'Noto Sans Mono',
-        },
-    ];
-
-    let activeFont = $state(fonts[0]);
-
-    onMount(() => {
-        const observer = new IntersectionObserver(
-            (entries) => {
-                for (const entry of entries) {
-                    if (!entry.isIntersecting) continue;
-
-                    const font = fonts.find((f) => f.internalName === entry.target.id);
-
-                    if (font) {
-                        activeFont = font;
-                    }
-                }
-            },
-            {
-                threshold: 0.6,
-            }
-        );
-
-        document.querySelectorAll('.font').forEach((el) => observer.observe(el));
-
-        return () => observer.disconnect();
-    });
-
-    let animate = $state(false);
-
-    $effect(() => {
-        activeFont;
-
-        animate = false;
-
-        requestAnimationFrame(() => {
-            animate = true;
-        });
-    });
 </script>
 
 <svelte:head>
@@ -88,16 +32,6 @@
 </section>
 
 <section id="showcase">
-    <div id="font-showcase" class={activeFont.internalName} class:animate>
-        <h1>{activeFont.name}</h1>
-
-        <p>
-            The quick brown fox jumps over the lazy dogs.<br /><br />
-            ABCDEFGHIJKLMNOPQRSTUVWXYZ<br />
-            abcdefghijklmnopqrstuvwxyz<br />
-        </p>
-    </div>
-
     <div id="font-description">
         <div class="font jetbrains-mono" id="jetbrains-mono">
             <h1>JetBrains Mono</h1>
@@ -111,7 +45,7 @@
                 <External href="https://github.com/JetBrains/JetBrainsMono">GitHub</External>
             </p>
 
-            <p>Designer(s):</p>
+            <p>Creator<span class="dim">(s)</span>:</p>
             <ul>
                 <li>
                     <b>JetBrains</b><br />
@@ -140,11 +74,11 @@
 
             <p>
                 Links:
-                <External href="https://github.com/tonsky/FiraCode">Github</External> |
+                <External href="https://github.com/tonsky/FiraCode">GitHub</External> |
                 <External href="https://fonts.google.com/specimen/Fira+Code">Google Fonts</External>
             </p>
 
-            <p>Designer(s):</p>
+            <p>Creator<span class="dim">(s)</span>:</p>
             <ul>
                 <li>
                     <b>tonsky</b><br />
@@ -155,8 +89,7 @@
             </ul>
 
             <p>
-                License: <External
-                    href="https://github.com/tonsky/FiraCode/blob/master/LICENSE     "
+                License: <External href="https://github.com/tonsky/FiraCode/blob/master/LICENSE"
                     >SIL Open Font License 1.1</External
                 >
             </p>
@@ -171,50 +104,118 @@
         <div class="font noto-sans" id="noto-sans">
             <h1>Noto Sans</h1>
 
-            notorious
+            <p>
+                Links:
+                <External href="https://fonts.google.com/noto/specimen/Noto+Sans"
+                    >Google Fonts</External
+                > |
+                <External href="https://github.com/notofonts/latin-greek-cyrillic">GitHub</External>
+                |
+                <External href="https://notofonts.github.io/">Dashboard</External>
+            </p>
+
+            <p>Creator<span class="dim">(s)</span>:</p>
+            <ul>
+                <li>
+                    <b>Noto Fonts Project</b><br />
+                    Links:
+                    <External href="https://github.com/notofonts">GitHub</External>
+                </li>
+            </ul>
+
+            <p>
+                License: <External
+                    href="https://github.com/notofonts/latin-greek-cyrillic/blob/main/OFL.txt"
+                    >SIL Open Font License 1.1</External
+                >
+            </p>
+
+            <p>
+                Identifier: <code>noto-sans</code>
+            </p>
+
+            <p>Usage: Used for general text and Unicode characters.</p>
         </div>
 
         <div class="font noto-sans-mono" id="noto-sans-mono">
             <h1>Noto Sans Mono</h1>
 
-            does mono stand for monokuma
+            <p>
+                Links:
+                <External href="https://fonts.google.com/noto/specimen/Noto+Sans+Mono"
+                    >Google Fonts</External
+                >
+            </p>
+
+            <p>Creator<span class="dim">(s)</span>:</p>
+            <ul>
+                <li>
+                    <b>Noto Fonts Project</b><br />
+                    Links:
+                    <External href="https://github.com/notofonts">GitHub</External>
+                </li>
+            </ul>
+
+            <p>
+                License: <External
+                    href="https://github.com/notofonts/latin-greek-cyrillic/blob/main/OFL.txt"
+                    >SIL Open Font License 1.1</External
+                >
+            </p>
+
+            <p>
+                Identifier: <code>noto-sans-mono</code>
+            </p>
+
+            <p>Usage: Used for monospaced texts and headings.</p>
+        </div>
+
+        <div class="font geist" id="geist">
+            <h1>Geist</h1>
+
+            <p>
+                Links:
+                <External href="https://fonts.google.com/specimen/Geist">Google Fonts</External> |
+                <External href="https://vercel.com/font">Website</External> |
+                <External href="https://github.com/vercel/geist-font">GitHub</External>
+            </p>
+
+            <p>Creator<span class="dim">(s)</span>:</p>
+            <ul>
+                <li>
+                    <b>Vercel</b><br />
+                    Links:
+                    <External href="https://vercel.com/home">Website</External>
+                </li>
+                <li>
+                    Others: Andrés Briganti, Mateo Zaragoza, Guillermo Rauch, Evil Rabbit, José
+                    Rago, Facundo Santana
+                </li>
+            </ul>
+
+            <p>
+                License: <External href="https://github.com/vercel/geist-font/blob/main/OFL.txt"
+                    >SIL Open Font License 1.1</External
+                >
+            </p>
+
+            <p>
+                Identifier: <code>geist</code>
+            </p>
+
+            <p>Usage: Used for most text.</p>
         </div>
     </div>
 </section>
 
 <style lang="css">
     #showcase {
-        display: flex;
-        flex-direction: row;
-        gap: 4rem;
-        align-items: flex-start;
-
         overflow: visible;
 
         background: radial-gradient(circle at bottom center, rgba(100, 0, 255, 0.25), transparent),
             black;
         background-position: center center;
         background-attachment: fixed;
-    }
-
-    #font-showcase {
-        position: sticky;
-        top: 0;
-
-        width: 40vw;
-        height: 100vh;
-
-        display: flex;
-        flex-direction: column;
-
-        justify-content: center;
-        align-items: flex-start;
-
-        padding: 2em;
-    }
-
-    #font-showcase.animate {
-        animation: fadeIn 0.5s ease;
     }
 
     @keyframes fadeIn {
@@ -228,10 +229,6 @@
         }
     }
 
-    #font-description {
-        width: 100vh;
-    }
-
     .font {
         min-height: 100vh;
         width: 100%;
@@ -240,11 +237,5 @@
         flex-direction: column;
         gap: 0.5em;
         justify-content: center;
-    }
-
-    @media (max-width: 1080px) {
-        #font-showcase {
-            display: none;
-        }
     }
 </style>

@@ -15,11 +15,7 @@
                 <b>Lanzaforge is a place for building things.</b>
             </p>
 
-            <p>
-                We create software, websites, tools, and experiments that we're interested in. Some
-                projects are practical, some are experimental, and some exist simply because we
-                wanted to see if we could make them.
-            </p>
+            <p>We create software, websites, tools, and experiments that we're interested in.</p>
         </div>
 
         <a class="plain" href="/projects">
